@@ -35,8 +35,7 @@ void Scene_Manager::notifyBeginFrame()
 void Scene_Manager::notifyDisplayFrame()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glClearColor(0.44, 0.66, 0.99, 1.0);
-
+	glClearColor(0.44f, 0.66f, 0.99f, 1.0f);
 	models_manager->Draw(projection_matrix, view_matrix, camera_position);
 }
 

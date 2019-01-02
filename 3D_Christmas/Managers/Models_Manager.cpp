@@ -31,6 +31,11 @@ Models_Manager::Models_Manager()
 	cube3->Create(-5, 1, 0, 1, glm::vec4(1.0, 0.0, 0.0, 1.0));
 	sceneModelList["cube3"] = cube3;
 
+	Models::ChristmasTree* tree = new Models::ChristmasTree();
+	tree->SetProgram(Shader_Manager::GetShader("colorShader"));
+	tree->Create(0, 0, 0);
+	sceneModelList["tree"] = tree;
+
 }
 
 Models_Manager::~Models_Manager()

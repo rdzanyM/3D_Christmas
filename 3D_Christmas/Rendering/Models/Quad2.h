@@ -5,7 +5,7 @@ namespace Rendering
 {
 	namespace Models
 	{
-		class Quad2 : public Model	//this quad has a vertex in a middle. Used to represent fog on the ground more accurately
+		class Quad2 : public Model	//this quad has more vertices (especially near the center). Used to represent the ground more accurately.
 		{
 		public:
 			Quad2();

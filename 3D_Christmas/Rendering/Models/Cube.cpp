@@ -3,8 +3,6 @@
 using namespace Rendering;
 using namespace Models;
 
-#define PI 3.14159265359
-
 Cube::Cube() {}
 
 Cube::~Cube() {}
