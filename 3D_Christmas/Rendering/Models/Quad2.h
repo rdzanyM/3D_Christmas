@@ -10,7 +10,7 @@ namespace Rendering
 		public:
 			Quad2();
 			~Quad2();
-			void Create(double x, double y, double z, double r, const glm::vec4& color);
+			void Create(double x, double y, double z, double r, double r2, const glm::vec4& color);
 			virtual void Update() override final;
 			void Draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix, const glm::vec3& camera_position) override final;
 		};

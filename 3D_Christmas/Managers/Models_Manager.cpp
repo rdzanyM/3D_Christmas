@@ -13,22 +13,22 @@ Models_Manager::Models_Manager()
 
 	Models::Quad2* ground = new Models::Quad2();
 	ground->SetProgram(Shader_Manager::GetShader("colorShader"));
-	ground->Create(0.0, -2.0, 0.0, 300.0, glm::vec4(0.44, 0.88, 0.11, 1.0));
+	ground->Create(0.0, 0.0, 0.0, 20.0, 200.0, glm::vec4(0.44, 0.88, 0.11, 1.0));
 	sceneModelList["ground"] = ground;
 
 	Models::Cube* cube = new Models::Cube();
 	cube->SetProgram(Shader_Manager::GetShader("colorShader"));
-	cube->Create(10,-1,-10,1,glm::vec4(1.0,0.0,0.0,1.0));
+	cube->Create(10, 1, -10, 1, glm::vec4(1.0,0.0,0.0,1.0));
 	sceneModelList["cube"] = cube;
 
 	Models::Cube* cube2 = new Models::Cube();
 	cube2->SetProgram(Shader_Manager::GetShader("colorShader"));
-	cube2->Create(-10, -1, -30, 1, glm::vec4(1.0, 0.0, 0.0, 1.0));
+	cube2->Create(-10, 1, -30, 1, glm::vec4(1.0, 0.0, 0.0, 1.0));
 	sceneModelList["cube2"] = cube2;
 
 	Models::Cube* cube3 = new Models::Cube();
 	cube3->SetProgram(Shader_Manager::GetShader("colorShader"));
-	cube3->Create(10, -1, -80, 1, glm::vec4(1.0, 0.0, 0.0, 1.0));
+	cube3->Create(-5, 1, 0, 1, glm::vec4(1.0, 0.0, 0.0, 1.0));
 	sceneModelList["cube3"] = cube3;
 
 }

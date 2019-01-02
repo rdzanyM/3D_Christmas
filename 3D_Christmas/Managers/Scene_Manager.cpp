@@ -11,7 +11,7 @@ Scene_Manager::Scene_Manager()
 									"Shaders\\Vertex_Shader.glsl",
 									"Shaders\\Fragment_Shader.glsl");
 
-	camera_position = glm::vec3(0.0, 0.0, 10.0);
+	camera_position = glm::vec3(0.0, 3.0, 10.0);
 	view_matrix = LookAt
 	(	camera_position,
 		glm::vec3(0.0, 0.0, 0.0),
