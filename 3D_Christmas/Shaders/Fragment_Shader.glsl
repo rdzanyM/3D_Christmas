@@ -8,10 +8,10 @@ in float distance;
 void main(void)
 {
 	out_color = color.rgba;
-	if (distance > 10000.0)
+	if (distance > 100.0)
 	{
 		out_color.a = 0.0;
 		return;
 	}
-	out_color.a = 1.0 - distance / 10000.0;
+	out_color.a = 1.0 - distance / 100.0;
 }

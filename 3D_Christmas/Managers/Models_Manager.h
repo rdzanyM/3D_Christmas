@@ -5,6 +5,8 @@
 #include "../Rendering/Models/Triangle.h"
 #include "../Rendering/Models/Quad.h"
 #include "../Rendering/Models/Cube.h"
+#include "../Rendering/Models/Quad2.h"
+
 
 using namespace Rendering;
 

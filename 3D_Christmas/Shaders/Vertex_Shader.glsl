@@ -13,6 +13,6 @@ void main()
 {
 	color = in_color;
 	vec3 dif = in_position - eye;
-	distance = dif.x * dif.x + dif.y * dif.y + dif.z * dif.z;
+	distance = sqrt(dif.x * dif.x + dif.y * dif.y + dif.z * dif.z);
     gl_Position = projection_matrix * view_matrix * vec4(in_position, 1);
 }
