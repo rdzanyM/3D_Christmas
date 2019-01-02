@@ -10,7 +10,7 @@ namespace Rendering
 		public:
 			Model();
 			virtual ~Model();
-			virtual void Draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix) override;
+			virtual void Draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix, const glm::vec3& camera_position) override;
 			virtual void Update() override;
 			virtual void SetProgram(GLuint shaderName) override;
 			virtual void Destroy() override;

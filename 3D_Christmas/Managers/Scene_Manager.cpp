@@ -11,9 +11,10 @@ Scene_Manager::Scene_Manager()
 									"Shaders\\Vertex_Shader.glsl",
 									"Shaders\\Fragment_Shader.glsl");
 
+	camera_position = glm::vec3(0.0, 0.0, 10.0);
 	view_matrix = LookAt
-	(	glm::vec3(0.0, 0.0, 10.0),
-		glm::vec3(0.0, 0.0, 0.0), 
+	(	camera_position,
+		glm::vec3(0.0, 0.0, 0.0),
 		glm::vec3(0.0, 1.0, 0.0)
 	);
 
@@ -36,7 +37,7 @@ void Scene_Manager::notifyDisplayFrame()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glClearColor(0.0, 0.0, 1.0, 1.0);
 
-	models_manager->Draw(projection_matrix, view_matrix);
+	models_manager->Draw(projection_matrix, view_matrix, camera_position);
 }
 
 void Scene_Manager::notifyEndFrame()

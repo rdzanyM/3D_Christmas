@@ -40,8 +40,7 @@ void Quad::Update()
 
 }
 
-void Quad::Draw(const glm::mat4& projection_matrix,
-	const glm::mat4& view_matrix)
+void Quad::Draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix, const glm::vec3& camera_position)
 {
 	glUseProgram(program);
 	glUniformMatrix4fv(glGetUniformLocation(program, "view_matrix"), 1, false, &view_matrix[0][0]);

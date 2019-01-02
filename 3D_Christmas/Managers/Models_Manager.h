@@ -16,7 +16,7 @@ namespace Managers
 		Models_Manager();
 		~Models_Manager();
 
-		void Draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix);
+		void Draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix, const glm::vec3& camera_position);
 		void Update();
 
 		void DeleteModel(const std::string& sceneModelName);

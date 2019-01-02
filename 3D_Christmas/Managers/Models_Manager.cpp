@@ -23,7 +23,7 @@ Models_Manager::Models_Manager()
 
 	Models::Cube* cube = new Models::Cube();
 	cube->SetProgram(Shader_Manager::GetShader("colorShader"));
-	cube->Create(5,3,0,1,glm::vec4(0.0,1.0,1.0,1.0));
+	cube->Create(5,0,0,1,glm::vec4(0.0,1.0,1.0,1.0));
 	sceneModelList["cube"] = cube;
 }
 
@@ -51,11 +51,11 @@ void Models_Manager::Update()
 	}
 }
 
-void Models_Manager::Draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix)
+void Models_Manager::Draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix, const glm::vec3& camera_position)
 {
 	for (auto model : sceneModelList)
 	{
-		model.second->Draw(projection_matrix, view_matrix);
+		model.second->Draw(projection_matrix, view_matrix, camera_position);
 	}
 }
 

@@ -19,6 +19,7 @@ namespace Managers
 									int previous_width,
 									int previous_height);
 	private:
+		glm::vec3 camera_position;
 		Managers::Shader_Manager* shader_manager;
 		Managers::Models_Manager* models_manager;
 		glm::mat4 view_matrix;
