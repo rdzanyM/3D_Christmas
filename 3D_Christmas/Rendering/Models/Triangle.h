@@ -10,9 +10,9 @@ namespace Rendering
 		public:
 			Triangle();
 			~Triangle();
-			void Create();
+			void Create(const glm::vec3& v1, const glm::vec3& v2, const glm::vec3& v3, const glm::vec4& color);
 			virtual void Update() override final;
-			virtual void Draw() override final;
+			void Draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix) override final;
 		};
 	}
 }

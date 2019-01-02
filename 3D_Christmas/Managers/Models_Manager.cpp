@@ -16,6 +16,10 @@ Models_Manager::Models_Manager()
 	quad->Create();
 	sceneModelList_NDC["quad"] = quad;
 	*/
+	Models::Triangle* triangle = new Models::Triangle();
+	triangle->SetProgram(Shader_Manager::GetShader("colorShader"));
+	triangle->Create(glm::vec3(-1e4, -2.0, 4e3), glm::vec3(0.0, -2.0, -12e3), glm::vec3(1e4, -2.0, 4e3), glm::vec4(0.0, 1.0, 0.0, 1.0));
+	sceneModelList["ground"] = triangle;
 
 	Models::Cube* cube = new Models::Cube();
 	cube->SetProgram(Shader_Manager::GetShader("colorShader"));
@@ -30,12 +34,6 @@ Models_Manager::~Models_Manager()
 		delete model.second;
 	}
 	sceneModelList.clear();
-
-	for (auto model : sceneModelList_NDC)
-	{
-		delete model.second;
-	}
-	sceneModelList_NDC.clear();
 }
 
 void Models_Manager::DeleteModel(const std::string& sceneModelName)
@@ -45,30 +43,11 @@ void Models_Manager::DeleteModel(const std::string& sceneModelName)
 	sceneModelList.erase(sceneModelName);
 }
 
-void Models_Manager::DeleteModel_NDC(const std::string& sceneModelName)
-{
-	ISceneObject* model = sceneModelList_NDC[sceneModelName];
-	model->Destroy();
-	sceneModelList_NDC.erase(sceneModelName);
-}
-
 void Models_Manager::Update()
 {
 	for (auto model : sceneModelList)
 	{
 		model.second->Update();
-	}
-	for (auto model : sceneModelList_NDC)
-	{
-		model.second->Update();
-	}
-}
-
-void Models_Manager::Draw()
-{
-	for (auto model : sceneModelList_NDC)
-	{
-		model.second->Draw();
 	}
 }
 
@@ -83,11 +62,6 @@ void Models_Manager::Draw(const glm::mat4& projection_matrix, const glm::mat4& v
 const ISceneObject& Models_Manager::GetModel(const std::string& sceneModelName) const
 {
 	return (*sceneModelList.at(sceneModelName));
-}
-
-const ISceneObject& Models_Manager::GetModel_NDC(const std::string& sceneModelName) const
-{
-	return (*sceneModelList_NDC.at(sceneModelName));
 }
 
 void Models_Manager::SetModel(const std::string& sceneObjectName, ISceneObject* sceneObject)

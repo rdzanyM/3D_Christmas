@@ -40,9 +40,12 @@ void Quad::Update()
 
 }
 
-void Quad::Draw()
+void Quad::Draw(const glm::mat4& projection_matrix,
+	const glm::mat4& view_matrix)
 {
 	glUseProgram(program);
+	glUniformMatrix4fv(glGetUniformLocation(program, "view_matrix"), 1, false, &view_matrix[0][0]);
+	glUniformMatrix4fv(glGetUniformLocation(program, "projection_matrix"), 1, false, &projection_matrix[0][0]);
 	glBindVertexArray(vao);
 	glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }

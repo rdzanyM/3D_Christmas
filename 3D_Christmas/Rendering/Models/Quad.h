@@ -12,7 +12,7 @@ namespace Rendering
 			~Quad();
 			void Create();
 			virtual void Update() override final;
-			virtual void Draw() override final;
+			void Draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix) override final;
 		};
 	}
 }
