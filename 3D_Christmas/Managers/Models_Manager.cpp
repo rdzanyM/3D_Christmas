@@ -26,10 +26,10 @@ Models_Manager::Models_Manager()
 	cube2->Create(-10, 1, -30, 1, glm::vec4(1.0, 0.0, 0.0, 1.0));
 	sceneModelList["cube2"] = cube2;
 
-	Models::Cube* cube3 = new Models::Cube();
-	cube3->SetProgram(Shader_Manager::GetShader("colorShader"));
-	cube3->Create(-5, 1, 0, 1, glm::vec4(1.0, 0.0, 0.0, 1.0));
-	sceneModelList["cube3"] = cube3;
+	Models::Gift* gift = new Models::Gift();
+	gift->SetProgram(Shader_Manager::GetShader("colorShader"));
+	gift->Create(-2, 0, 4, 1, 1, 1, glm::vec4(1.0, 0.0, 1.0, 1.0), glm::vec4(1.0, 1.0, 0.0, 1.0));
+	sceneModelList["gift"] = gift;
 
 	Models::ChristmasTree* tree = new Models::ChristmasTree();
 	tree->SetProgram(Shader_Manager::GetShader("colorShader"));

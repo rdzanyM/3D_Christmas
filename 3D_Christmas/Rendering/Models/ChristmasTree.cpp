@@ -23,27 +23,27 @@ void ChristmasTree::Create(double x, double y, double z)
 	{
 		double diag = sqrt2 * r / 2;
 		vertices.push_back(VertexFormat(glm::vec3(x + diag, h1, z + diag), color));
-		vertices.push_back(VertexFormat(glm::vec3(x		  , h1, z + r   ), color));
+		vertices.push_back(VertexFormat(glm::vec3(x		  , h1, z +  r  ), color));
 		vertices.push_back(VertexFormat(glm::vec3(x		  , h2, z		), color));
-		vertices.push_back(VertexFormat(glm::vec3(x + r	  , h1, z		), color));
+		vertices.push_back(VertexFormat(glm::vec3(x +  r  , h1, z		), color));
 		vertices.push_back(VertexFormat(glm::vec3(x + diag, h1, z + diag), color));
 		vertices.push_back(VertexFormat(glm::vec3(x		  , h2, z		), color));
 		vertices.push_back(VertexFormat(glm::vec3(x + diag, h1, z - diag), color));
-		vertices.push_back(VertexFormat(glm::vec3(x + r	  , h1, z		), color));
+		vertices.push_back(VertexFormat(glm::vec3(x +  r  , h1, z		), color));
 		vertices.push_back(VertexFormat(glm::vec3(x		  , h2, z		), color));
-		vertices.push_back(VertexFormat(glm::vec3(x		  , h1, z - r   ), color));
+		vertices.push_back(VertexFormat(glm::vec3(x		  , h1, z -  r  ), color));
 		vertices.push_back(VertexFormat(glm::vec3(x + diag, h1, z - diag), color));
 		vertices.push_back(VertexFormat(glm::vec3(x		  , h2, z		), color));
 		vertices.push_back(VertexFormat(glm::vec3(x - diag, h1, z - diag), color));
-		vertices.push_back(VertexFormat(glm::vec3(x		  , h1, z - r   ), color));
+		vertices.push_back(VertexFormat(glm::vec3(x		  , h1, z -  r  ), color));
 		vertices.push_back(VertexFormat(glm::vec3(x		  , h2, z		), color));
-		vertices.push_back(VertexFormat(glm::vec3(x - r	  , h1, z		), color));
+		vertices.push_back(VertexFormat(glm::vec3(x -  r  , h1, z		), color));
 		vertices.push_back(VertexFormat(glm::vec3(x - diag, h1, z - diag), color));
 		vertices.push_back(VertexFormat(glm::vec3(x		  , h2, z		), color));
 		vertices.push_back(VertexFormat(glm::vec3(x - diag, h1, z + diag), color));
-		vertices.push_back(VertexFormat(glm::vec3(x - r	  , h1, z		), color));
+		vertices.push_back(VertexFormat(glm::vec3(x -  r  , h1, z		), color));
 		vertices.push_back(VertexFormat(glm::vec3(x		  , h2, z		), color));
-		vertices.push_back(VertexFormat(glm::vec3(x		  , h1, z + r   ), color));
+		vertices.push_back(VertexFormat(glm::vec3(x		  , h1, z +  r  ), color));
 		vertices.push_back(VertexFormat(glm::vec3(x - diag, h1, z + diag), color));
 		vertices.push_back(VertexFormat(glm::vec3(x		  , h2, z		), color));
 	};
@@ -54,7 +54,6 @@ void ChristmasTree::Create(double x, double y, double z)
 	addPyramid(2.5, 4.0, 1.5, needles);
 	addPyramid(1.6, 3.0, 2.0, needles);
 	addPyramid(0.8, 2.2, 2.5, needles);
-
 	
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -66,7 +65,6 @@ void ChristmasTree::Create(double x, double y, double z)
 	glBindVertexArray(0);
 	this->vao = vao;
 	this->vbos.push_back(vbo);
-
 }
 
 void ChristmasTree::Update() {}

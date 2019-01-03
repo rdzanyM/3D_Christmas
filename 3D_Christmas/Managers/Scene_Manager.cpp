@@ -13,7 +13,8 @@ Scene_Manager::Scene_Manager()
 
 	camera_position = glm::vec3(0.0, 3.0, 10.0);
 	view_matrix = LookAt
-	(	camera_position,
+	(	
+		camera_position,
 		glm::vec3(0.0, 0.0, 0.0),
 		glm::vec3(0.0, 1.0, 0.0)
 	);
@@ -65,22 +66,10 @@ glm::mat4 Scene_Manager::LookAt(const glm::vec3& position,
 {
 	glm::vec3 f = position - target;
 	f = glm::normalize(f);
-	glm::vec3 s = glm::cross(f, up); //cross product s = f X up
+	glm::vec3 s = glm::cross(f, up);
 	s = glm::normalize(s);
 	glm::vec3 v = glm::cross(s, f);
-
-	//Note! Vectors f,s,v must create a rotation matrix
-	//To check if rotation matrix is OK, transpose and inverse
-	//of rotation matrix must be equal
-	//Check R^T = R^-1
-
-	//One more thing; The camera is not looking forward, it's looking
-	//backwards. Camera position is on a positive Z but it's looking
-	//in the opposite direction. Ex: position (0,0,100) target (0,0,0)
-	//So the view direction is -100. So let's turn f negative.
-	//This way the R determinant is going to be equal to 1 and not -1
 	f = -f;
-	
 	return glm::transpose(glm::mat4
 	(
 		s.x, s.y, s.z, -glm::dot(s, position),

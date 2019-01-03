@@ -7,7 +7,7 @@
 #include "../Rendering/Models/Cube.h"
 #include "../Rendering/Models/Quad2.h"
 #include "../Rendering/Models/ChristmasTree.h"
-
+#include "../Rendering/Models/Gift.h"
 
 using namespace Rendering;
 
