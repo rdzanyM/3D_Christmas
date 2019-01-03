@@ -18,6 +18,10 @@ Scene_Manager::Scene_Manager()
 		glm::vec3(0.0, 2.0, 0.0),
 		glm::vec3(0.0, 1.0, 0.0)
 	);
+	glUseProgram(Shader_Manager::GetShader("colorShader"));
+	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "eye"), camera_position.x, camera_position.y, camera_position.z);
+	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "light"), 2, 3, 4);
+	glUniform1f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "ambient"), 0.1);
 
 	models_manager = new Models_Manager();
 
