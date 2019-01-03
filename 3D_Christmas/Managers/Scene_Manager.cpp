@@ -11,15 +11,16 @@ Scene_Manager::Scene_Manager()
 									"Shaders\\Vertex_Shader.glsl",
 									"Shaders\\Fragment_Shader.glsl");
 
-	camera_position = glm::vec3(0.0, 3.0, 10.0);
+	camera_position = glm::vec3(0.0, 5.0, 8.0);
 	view_matrix = LookAt
 	(	
 		camera_position,
-		glm::vec3(0.0, 0.0, 0.0),
+		glm::vec3(0.0, 2.0, 0.0),
 		glm::vec3(0.0, 1.0, 0.0)
 	);
 
 	models_manager = new Models_Manager();
+
 }
 
 Scene_Manager::~Scene_Manager()

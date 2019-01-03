@@ -6,11 +6,6 @@ using namespace Rendering;
 Models_Manager::Models_Manager()
 {
 
-	//Models::Triangle* triangle = new Models::Triangle();
-	//triangle->SetProgram(Shader_Manager::GetShader("colorShader"));
-	//triangle->Create(glm::vec3(-1e4, -2.0, 4e3), glm::vec3(0.0, -2.0, -12e3), glm::vec3(1e4, -2.0, 4e3), glm::vec4(0.0, 1.0, 0.0, 1.0));
-	//sceneModelList["ground"] = triangle;
-
 	Models::Quad2* ground = new Models::Quad2();
 	ground->SetProgram(Shader_Manager::GetShader("colorShader"));
 	ground->Create(0.0, 0.0, 0.0, 20.0, 200.0, glm::vec4(0.44, 0.88, 0.11, 1.0));
@@ -28,8 +23,13 @@ Models_Manager::Models_Manager()
 
 	Models::Gift* gift = new Models::Gift();
 	gift->SetProgram(Shader_Manager::GetShader("colorShader"));
-	gift->Create(-2, 0, 4, 1, 1, 1, glm::vec4(1.0, 0.0, 1.0, 1.0), glm::vec4(1.0, 1.0, 0.0, 1.0));
+	gift->Create(-2, 0, 4, 1, 1.4, 1, glm::vec4(1.0, 0.0, 1.0, 1.0), glm::vec4(1.0, 1.0, 0.0, 1.0));
 	sceneModelList["gift"] = gift;
+
+	Models::Gift* gift2 = new Models::Gift();
+	gift2->SetProgram(Shader_Manager::GetShader("colorShader"));
+	gift2->Create(2.6, 0, 2, 2, 1, 1, glm::vec4(0.1, 0.0, 1.0, 1.0), glm::vec4(1.0, 0.5, 0.0, 1.0));
+	sceneModelList["gift2"] = gift2;
 
 	Models::ChristmasTree* tree = new Models::ChristmasTree();
 	tree->SetProgram(Shader_Manager::GetShader("colorShader"));

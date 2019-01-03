@@ -48,12 +48,12 @@ void ChristmasTree::Create(double x, double y, double z)
 		vertices.push_back(VertexFormat(glm::vec3(x		  , h2, z		), color));
 	};
 
-	addPyramid(0.0, 5.0, 1.0, glm::vec4(0.3, 0.1, 0, 1));	//trunk
+	addPyramid(0.0, 5.5, 1.0, glm::vec4(0.3, 0.1, 0, 1));	//trunk
 	glm::vec4 needles = glm::vec4(0.1, 0.5, 0.1, 1);
-	addPyramid(3.3, 4.9, 1.0, needles);
-	addPyramid(2.5, 4.0, 1.5, needles);
-	addPyramid(1.6, 3.0, 2.0, needles);
-	addPyramid(0.8, 2.2, 2.5, needles);
+	addPyramid(3.8, 5.4, 1.0, needles);
+	addPyramid(3.0, 4.5, 1.5, needles);
+	addPyramid(2.1, 3.5, 2.0, needles);
+	addPyramid(1.3, 2.7, 2.5, needles);
 	
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
