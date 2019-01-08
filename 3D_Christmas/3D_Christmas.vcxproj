@@ -127,11 +127,14 @@
     <ClCompile Include="Rendering\Models\Model.cpp" />
     <ClCompile Include="Rendering\Models\Quad.cpp" />
     <ClCompile Include="Rendering\Models\Quad2.cpp" />
+    <ClCompile Include="Rendering\Models\Star.cpp" />
     <ClCompile Include="Rendering\Models\Triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Shaders\Fragment_Shader.glsl" />
     <None Include="packages.config" />
+    <None Include="Shaders\Star_Fragment_Shader.glsl" />
+    <None Include="Shaders\Star_Vertex_Shader.glsl" />
     <None Include="Shaders\Vertex_Shader.glsl" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +155,7 @@
     <ClInclude Include="Rendering\Models\Model.h" />
     <ClInclude Include="Rendering\Models\Quad.h" />
     <ClInclude Include="Rendering\Models\Quad2.h" />
+    <ClInclude Include="Rendering\Models\Star.h" />
     <ClInclude Include="Rendering\Models\Triangle.h" />
     <ClInclude Include="Rendering\VertexFormat.h" />
   </ItemGroup>

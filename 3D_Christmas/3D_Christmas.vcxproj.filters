@@ -60,6 +60,9 @@
     <ClCompile Include="Rendering\Models\Gift.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Rendering\Models\Star.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -69,6 +72,8 @@
     <None Include="Shaders\Vertex_Shader.glsl">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="Shaders\Star_Fragment_Shader.glsl" />
+    <None Include="Shaders\Star_Vertex_Shader.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Managers\Shader_Manager.h">
@@ -126,6 +131,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Rendering\Models\Gift.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rendering\Models\Star.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

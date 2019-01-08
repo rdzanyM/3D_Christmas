@@ -2,6 +2,9 @@
 
 using namespace Managers;
 using namespace Rendering;
+void Timer(int value);
+float step = 0;
+Models::Star* star;
 
 Models_Manager::Models_Manager()
 {
@@ -36,6 +39,20 @@ Models_Manager::Models_Manager()
 	tree->Create(0, 0, 0);
 	sceneModelList["tree"] = tree;
 
+	star = new Models::Star();
+	star->SetProgram(Shader_Manager::GetShader("starShader"));
+	star->Create(0.2, glm::vec4(1.0, 1.0, 1.0, 1.0));
+	sceneModelList["star"] = star;
+
+	Timer(0);
+
+}
+
+void Timer(int value) {
+	glutTimerFunc(16, Timer, 0);
+	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "light"), 4 * sin(step), 4, 4 * cos(step));
+	star->Move(4 * sin(step), 4, 4 * cos(step));
+	step += 0.01;
 }
 
 Models_Manager::~Models_Manager()

@@ -8,6 +8,7 @@
 #include "../Rendering/Models/Quad2.h"
 #include "../Rendering/Models/ChristmasTree.h"
 #include "../Rendering/Models/Gift.h"
+#include "../Rendering/Models/Star.h"
 
 using namespace Rendering;
 

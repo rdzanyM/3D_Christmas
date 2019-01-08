@@ -50,7 +50,6 @@ void ChristmasTree::Create(double x, double y, double z)
 		n7 = glm::normalize(n7 + n8);
 		n8 = glm::normalize(n8 + n);
 
-
 		vertices.push_back(VertexFormat(v2, color, n1));
 		vertices.push_back(VertexFormat(v1, color, n8));
 		vertices.push_back(VertexFormat(top, color));
@@ -75,7 +74,6 @@ void ChristmasTree::Create(double x, double y, double z)
 		vertices.push_back(VertexFormat(v1, color, n8));
 		vertices.push_back(VertexFormat(v8, color, n7));
 		vertices.push_back(VertexFormat(top, color));
-
 	};
 
 	addPyramid(0.0, 5.5, 1.0, glm::vec4(0.3, 0.1, 0, 1));	//trunk

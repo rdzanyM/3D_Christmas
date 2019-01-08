@@ -10,6 +10,9 @@ Scene_Manager::Scene_Manager()
 	shader_manager->CreateProgram(	"colorShader",
 									"Shaders\\Vertex_Shader.glsl",
 									"Shaders\\Fragment_Shader.glsl");
+	shader_manager->CreateProgram(	"starShader",
+									"Shaders\\Star_Vertex_Shader.glsl",
+									"Shaders\\Star_Fragment_Shader.glsl");
 
 	camera_position = glm::vec3(0.0, 5.0, 8.0);
 	view_matrix = LookAt
@@ -21,10 +24,9 @@ Scene_Manager::Scene_Manager()
 	glUseProgram(Shader_Manager::GetShader("colorShader"));
 	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "eye"), camera_position.x, camera_position.y, camera_position.z);
 	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "light"), 2, 3, 4);
-	glUniform1f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "ambient"), 0.1);
+	glUniform1f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "ambient"), 0.07);
 
-	models_manager = new Models_Manager();
-
+	models_manager = new Models_Manager();	
 }
 
 Scene_Manager::~Scene_Manager()
