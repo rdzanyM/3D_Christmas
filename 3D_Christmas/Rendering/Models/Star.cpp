@@ -36,7 +36,75 @@ void Star::Create(double r, const glm::vec4& color)
 	vertices.push_back(VertexFormat(glm::vec3(  -r  ,  -r  ,   r  ), color));
 	vertices.push_back(VertexFormat(glm::vec3(  0.0 ,  0.0 , 4 * r), color));
 
+	//back
+	vertices.push_back(VertexFormat(glm::vec3(  -r  ,   r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  -r  ,  -r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  0.0 ,  0.0 ,-4 * r), color));
+	vertices.push_back(VertexFormat(glm::vec3(   r  ,   r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  -r  ,   r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  0.0 ,  0.0 ,-4 * r), color));
+	vertices.push_back(VertexFormat(glm::vec3(   r  ,  -r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(   r  ,   r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  0.0 ,  0.0 ,-4 * r), color));
+	vertices.push_back(VertexFormat(glm::vec3(  -r  ,  -r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(   r  ,  -r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  0.0 ,  0.0 ,-4 * r), color));
 
+	//right
+	vertices.push_back(VertexFormat(glm::vec3(  -r  ,  -r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  -r  ,   r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(-4 * r,  0.0 ,  0.0 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  -r  ,   r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  -r  ,   r  ,   r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(-4 * r,  0.0 ,  0.0 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  -r  ,   r  ,   r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  -r  ,  -r  ,   r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(-4 * r,  0.0 ,  0.0 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  -r  ,  -r  ,   r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  -r  ,  -r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(-4 * r,  0.0 ,  0.0 ), color));
+
+	//left
+	vertices.push_back(VertexFormat(glm::vec3(   r  ,   r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(   r  ,  -r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3( 4 * r,  0.0 ,  0.0 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(   r  ,   r  ,   r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(   r  ,   r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3( 4 * r,  0.0 ,  0.0 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(   r  ,  -r  ,   r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(   r  ,   r  ,   r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3( 4 * r,  0.0 ,  0.0 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(   r  ,  -r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(   r  ,  -r  ,   r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3( 4 * r,  0.0 ,  0.0 ), color));
+
+	//up
+	vertices.push_back(VertexFormat(glm::vec3(  -r  ,   r  ,   r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  -r  ,   r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  0.0 , 4 * r,  0.0 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  -r  ,   r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(   r  ,   r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  0.0 , 4 * r,  0.0 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(   r  ,   r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(   r  ,   r  ,   r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  0.0 , 4 * r,  0.0 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(   r  ,   r  ,   r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  -r  ,   r  ,   r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  0.0 , 4 * r,  0.0 ), color));
+
+	//down
+	vertices.push_back(VertexFormat(glm::vec3(  -r  ,  -r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  -r  ,  -r  ,   r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  0.0 ,-4 * r,  0.0 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(   r  ,  -r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  -r  ,  -r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  0.0 ,-4 * r,  0.0 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(   r  ,  -r  ,   r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(   r  ,  -r  ,  -r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  0.0 ,-4 * r,  0.0 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  -r  ,  -r  ,   r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(   r  ,  -r  ,   r  ), color));
+	vertices.push_back(VertexFormat(glm::vec3(  0.0 ,-4 * r,  0.0 ), color));
 
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -64,5 +132,5 @@ void Star::Draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix
 	glUniformMatrix4fv(glGetUniformLocation(program, "view_matrix"), 1, false, &view_matrix[0][0]);
 	glUniformMatrix4fv(glGetUniformLocation(program, "projection_matrix"), 1, false, &projection_matrix[0][0]);
 	glBindVertexArray(vao);
-	glDrawArrays(GL_TRIANGLES, 0, 12);
+	glDrawArrays(GL_TRIANGLES, 0, 72);
 }

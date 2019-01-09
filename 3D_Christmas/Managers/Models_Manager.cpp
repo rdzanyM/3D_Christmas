@@ -41,17 +41,18 @@ Models_Manager::Models_Manager()
 
 	star = new Models::Star();
 	star->SetProgram(Shader_Manager::GetShader("starShader"));
-	star->Create(0.2, glm::vec4(1.0, 1.0, 1.0, 1.0));
+	star->Create(0.04, glm::vec4(1.0, 1.0, 1.0, 1.0));
 	sceneModelList["star"] = star;
 
 	Timer(0);
 
 }
 
-void Timer(int value) {
+void Timer(int value)
+{
 	glutTimerFunc(16, Timer, 0);
-	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "light"), 4 * sin(step), 4, 4 * cos(step));
-	star->Move(4 * sin(step), 4, 4 * cos(step));
+	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "light"), 4 * sin(step), 2.5 + sin(step * 2.2), 4 * cos(step));
+	star->Move(4 * sin(step), 2.5 + sin(step * 2.2), 4 * cos(step));
 	step += 0.01;
 }
 
