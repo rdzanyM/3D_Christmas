@@ -63,6 +63,7 @@ void Timer(int value)
 
 	//alternate cameras
 	{
+		//static
 		if ((int)step % 15 < 5)
 		{
 			glm::vec3 f = cam - glm::vec3(0.0, 2.0, 0.0);
@@ -79,9 +80,13 @@ void Timer(int value)
 				0, 0, 0, 1)
 			);
 		}
+		
+		//bound with star
 		else if ((int)step % 15 < 10)
 		{
-			glm::vec3 pos = glm::vec3(x, y + 1, z - 2);
+			glUseProgram(Shader_Manager::GetShader("colorShader"));
+			glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "eye"), x + 1, y + 1, z - 2);
+			glm::vec3 pos = glm::vec3(x + 1, y + 1, z - 2);
 			glm::vec3 f = pos - glm::vec3(x, y, z);
 			f = glm::normalize(f);
 			glm::vec3 s = glm::cross(f, glm::vec3(0.0, 1.0, 0.0));
@@ -96,6 +101,8 @@ void Timer(int value)
 				0, 0, 0, 1)
 			);
 		}
+		
+		//looking at star
 		else
 		{
 			glm::vec3 f = cam - glm::vec3(x, y, z);
@@ -114,7 +121,7 @@ void Timer(int value)
 		}
 	}
 
-	step += 0.01;
+	step += 0.01f;
 }
 
 Models_Manager::~Models_Manager()

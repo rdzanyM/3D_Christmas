@@ -32,8 +32,8 @@ void Init_GLUT::init(	const Core::WindowInfo& windowInfo,
 	std::cout << "GLUT:initialized\n";
 	glEnable(GL_DEBUG_OUTPUT);
 	glEnable(GL_CULL_FACE);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	glEnable(GL_BLEND);
+	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	//glEnable(GL_BLEND);
 	glutIdleFunc(idleCallback);
 	glutCloseFunc(closeCallback);
 	glutDisplayFunc(displayCallback);

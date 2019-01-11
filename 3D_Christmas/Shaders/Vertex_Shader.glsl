@@ -15,6 +15,7 @@ out vec3 lightV;
 out vec3 mainLightV;
 out vec3 normalV;
 out float lightDistSquare;
+out vec3 V;
 
 void main()
 {
@@ -23,6 +24,7 @@ void main()
 	vec3 dif = in_position - eye;
 	distance = sqrt(dif.x * dif.x + dif.y * dif.y + dif.z * dif.z);
 	lightV = normalize(light - in_position);
+	V = normalize(eye - in_position);
 	mainLightV = normalize(mainLight - in_position);
 	dif = in_position - light;
 	lightDistSquare = dif.x * dif.x + dif.y * dif.y + dif.z * dif.z;
