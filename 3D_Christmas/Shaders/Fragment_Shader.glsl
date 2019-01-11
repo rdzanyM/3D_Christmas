@@ -9,13 +9,23 @@ in float distance;
 in vec3 lightV;
 in vec3 mainLightV;
 in vec3 normalV;
+in float lightDistSquare;
 
 void main(void)
 {
-	float f = dot(lightV, normalV);
-	if(f < 0.0)
+	float f;
+	float i = 1.0 - lightDistSquare / 25.0;
+	if(i > 0.0)
 	{
-		f = 0.0;
+		f = dot(lightV, normalV);
+		if(f < 0.0)
+		{
+			f = 0.0;
+		}
+		else
+		{
+			f *= i;
+		}
 	}
 	float f2 = dot(mainLightV, normalV) / 3;
 	if(f2 < 0.0)
