@@ -67,7 +67,7 @@ void main(void)
 	}
 
 	//rcolor result
-	out_color = color.rgba * f + r * color.rgba;
+	out_color = color.rgba * f + r * color.rgba * 0.8;
 	float max = out_color.r;
 	if(out_color.g > max)
 	{
@@ -81,7 +81,6 @@ void main(void)
 	{
 		out_color /= max;
 	}
-
 
 	//fog
 	if (distance > 100.0)

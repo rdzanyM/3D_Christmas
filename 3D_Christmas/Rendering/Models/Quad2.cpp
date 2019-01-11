@@ -13,20 +13,62 @@ void Quad2::Create(double x, double y, double z, double r, double r2, const glm:
 	glGenVertexArrays(1, &vao);
 	glBindVertexArray(vao);
 	double h = 4;
+	double s = r / 2;
 
 	std::vector<VertexFormat> vertices;
+	
+	//vertices.push_back(VertexFormat(glm::vec3(x    , y, z	 ), color));
+	//vertices.push_back(VertexFormat(glm::vec3(x - r, y, z	 ), color));
+	//vertices.push_back(VertexFormat(glm::vec3(x    , y, z - r), color));
 	vertices.push_back(VertexFormat(glm::vec3(x    , y, z	 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(x - s, y, z	 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(x    , y, z - s), color));
+	vertices.push_back(VertexFormat(glm::vec3(x    , y, z - s), color));
+	vertices.push_back(VertexFormat(glm::vec3(x - s, y, z	 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(x    , y, z - r), color));
+	vertices.push_back(VertexFormat(glm::vec3(x - s, y, z	 ), color));
 	vertices.push_back(VertexFormat(glm::vec3(x - r, y, z	 ), color));
 	vertices.push_back(VertexFormat(glm::vec3(x    , y, z - r), color));
+
+	//vertices.push_back(VertexFormat(glm::vec3(x    , y, z	 ), color));
+	//vertices.push_back(VertexFormat(glm::vec3(x    , y, z - r), color));
+	//vertices.push_back(VertexFormat(glm::vec3(x + r, y, z	 ), color));
 	vertices.push_back(VertexFormat(glm::vec3(x    , y, z	 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(x    , y, z - s), color));
+	vertices.push_back(VertexFormat(glm::vec3(x + s, y, z	 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(x + s, y, z	 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(x    , y, z - s), color));
+	vertices.push_back(VertexFormat(glm::vec3(x + r, y, z	 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(x + r, y, z	 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(x    , y, z - s), color));
 	vertices.push_back(VertexFormat(glm::vec3(x    , y, z - r), color));
-	vertices.push_back(VertexFormat(glm::vec3(x + r, y, z	 ), color));
+
+	//vertices.push_back(VertexFormat(glm::vec3(x    , y, z	 ), color));
+	//vertices.push_back(VertexFormat(glm::vec3(x + r, y, z	 ), color));
+	//vertices.push_back(VertexFormat(glm::vec3(x    , y, z + r), color));
 	vertices.push_back(VertexFormat(glm::vec3(x    , y, z	 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(x + s, y, z	 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(x    , y, z + s), color));
+	vertices.push_back(VertexFormat(glm::vec3(x    , y, z + s), color));
+	vertices.push_back(VertexFormat(glm::vec3(x + s, y, z	 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(x    , y, z + r), color));
+	vertices.push_back(VertexFormat(glm::vec3(x + s, y, z	 ), color));
 	vertices.push_back(VertexFormat(glm::vec3(x + r, y, z	 ), color));
 	vertices.push_back(VertexFormat(glm::vec3(x    , y, z + r), color));
+
+	//vertices.push_back(VertexFormat(glm::vec3(x    , y, z	 ), color));
+	//vertices.push_back(VertexFormat(glm::vec3(x    , y, z + r), color));
+	//vertices.push_back(VertexFormat(glm::vec3(x - r, y, z	 ), color));
 	vertices.push_back(VertexFormat(glm::vec3(x    , y, z	 ), color));
-	vertices.push_back(VertexFormat(glm::vec3(x    , y, z + r), color));
+	vertices.push_back(VertexFormat(glm::vec3(x    , y, z + s), color));
+	vertices.push_back(VertexFormat(glm::vec3(x - s, y, z	 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(x - s, y, z	 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(x    , y, z + s), color));
 	vertices.push_back(VertexFormat(glm::vec3(x - r, y, z	 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(x - r, y, z	 ), color));
+	vertices.push_back(VertexFormat(glm::vec3(x    , y, z + s), color));
+	vertices.push_back(VertexFormat(glm::vec3(x    , y, z + r), color));
+
 
 	vertices.push_back(VertexFormat(glm::vec3(x - r , y    , z     ), color));
 	vertices.push_back(VertexFormat(glm::vec3(x - r2, y - h, z + r2), color));
@@ -55,8 +97,6 @@ void Quad2::Create(double x, double y, double z, double r, double r2, const glm:
 	vertices.push_back(VertexFormat(glm::vec3(x		, y	   , z + r ), color));
 
 
-
-
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(VertexFormat) * vertices.size(), &vertices[0], GL_STATIC_DRAW);
@@ -81,7 +121,6 @@ void Quad2::Draw(const glm::mat4& projection_matrix, const glm::mat4& view_matri
 	glUseProgram(program);
 	glUniformMatrix4fv(glGetUniformLocation(program, "view_matrix"), 1, false, &view_matrix[0][0]);
 	glUniformMatrix4fv(glGetUniformLocation(program, "projection_matrix"), 1, false, &projection_matrix[0][0]);
-	glUniform3f(glGetUniformLocation(program, "eye"), camera_position.x, camera_position.y, camera_position.z);
 	glBindVertexArray(vao);
-	glDrawArrays(GL_TRIANGLES, 0, 36);
+	glDrawArrays(GL_TRIANGLES, 0, 60);
 }
