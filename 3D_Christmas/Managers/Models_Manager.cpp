@@ -5,6 +5,8 @@ using namespace Rendering;
 void Timer(int value);
 float step = 0;
 Models::Star* star;
+glm::mat4 vm;
+glm::vec3 cam = glm::vec3(0.0, 5.0, 8.0);
 
 Models_Manager::Models_Manager()
 {
@@ -51,8 +53,62 @@ Models_Manager::Models_Manager()
 void Timer(int value)
 {
 	glutTimerFunc(16, Timer, 0);
-	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "light"), 4 * sin(step), 2.5 + sin(step * 2.2), 4 * cos(step));
-	star->Move(4 * sin(step), 2.5 + sin(step * 2.2), 4 * cos(step));
+	double x = 4 * sin(step);
+	double y = 2.5 + sin(step * 2.2);
+	double z = 4 * cos(step);
+	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "light"), x, y, z);
+	star->Move(x, y, z);
+
+	if ((int)step % 15 < 5)
+	{
+		glm::vec3 f = cam - glm::vec3(0.0, 2.0, 0.0);
+		f = glm::normalize(f);
+		glm::vec3 s = glm::cross(f, glm::vec3(0.0, 1.0, 0.0));
+		s = glm::normalize(s);
+		glm::vec3 v = glm::cross(s, f);
+		f = -f;
+		vm = glm::transpose(glm::mat4
+		(
+			s.x, s.y, s.z, -glm::dot(s, cam),
+			v.x, v.y, v.z, -glm::dot(v, cam),
+			f.x, f.y, f.z, -glm::dot(f, cam),
+			0, 0, 0, 1)
+		);
+	}
+	else if ((int)step % 15 < 10)
+	{
+		glm::vec3 pos = glm::vec3(x, y + 1, z - 2);
+		glm::vec3 f = pos - glm::vec3(x, y, z);
+		f = glm::normalize(f);
+		glm::vec3 s = glm::cross(f, glm::vec3(0.0, 1.0, 0.0));
+		s = glm::normalize(s);
+		glm::vec3 v = glm::cross(s, f);
+		f = -f;
+		vm = glm::transpose(glm::mat4
+		(
+			s.x, s.y, s.z, -glm::dot(s, pos),
+			v.x, v.y, v.z, -glm::dot(v, pos),
+			f.x, f.y, f.z, -glm::dot(f, pos),
+			0, 0, 0, 1)
+		);
+	}
+	else
+	{
+		glm::vec3 f = cam - glm::vec3(x, y, z);
+		f = glm::normalize(f);
+		glm::vec3 s = glm::cross(f, glm::vec3(0.0, 1.0, 0.0));
+		s = glm::normalize(s);
+		glm::vec3 v = glm::cross(s, f);
+		f = -f;
+		vm = glm::transpose(glm::mat4
+		(
+			s.x, s.y, s.z, -glm::dot(s, cam),
+			v.x, v.y, v.z, -glm::dot(v, cam),
+			f.x, f.y, f.z, -glm::dot(f, cam),
+			0, 0, 0, 1)
+		);
+	}
+
 	step += 0.01;
 }
 
@@ -84,7 +140,7 @@ void Models_Manager::Draw(const glm::mat4& projection_matrix, const glm::mat4& v
 {
 	for (auto model : sceneModelList)
 	{
-		model.second->Draw(projection_matrix, view_matrix, camera_position);
+		model.second->Draw(projection_matrix, vm, camera_position);
 	}
 }
 
