@@ -133,9 +133,11 @@
   <ItemGroup>
     <None Include="Shaders\Fragment_Shader.glsl" />
     <None Include="packages.config" />
+    <None Include="Shaders\Fragment_Shader_Phong.glsl" />
     <None Include="Shaders\Star_Fragment_Shader.glsl" />
     <None Include="Shaders\Star_Vertex_Shader.glsl" />
     <None Include="Shaders\Vertex_Shader.glsl" />
+    <None Include="Shaders\Vertex_Shader_Phong.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Init\ContextInfo.h" />
