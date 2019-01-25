@@ -7,10 +7,7 @@ using namespace Init;
 
 int main(int argc, char **argv)
 {
-	WindowInfo window(	std::string("in2gpu OpenGL Beginner Tutorial "),
-						400, 200,	//position
-						800, 600,	//size
-						true);		//reshape
+	WindowInfo window(std::string("3DChristmas"), 150, 80, 1200, 800, true);
 
 	ContextInfo context(4, 3, true);
 	FramebufferInfo frameBufferInfo(true, true, true, true);

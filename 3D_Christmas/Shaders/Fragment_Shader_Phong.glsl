@@ -41,7 +41,6 @@ void main(void)
 		else
 		{
 			f *= i;
-			
 			//reflected
 			rv = 2 * normalV * d - lightV;
 			r = dot(rv, V);
@@ -51,8 +50,6 @@ void main(void)
 			}
 			else
 			{
-				r *= r;
-				r *= r;
 				r *= r;
 				r *= r;
 				r *= r;
@@ -76,9 +73,10 @@ void main(void)
 	{
 		f = 1.0;
 	}
+	r *= i;
 
 	//rcolor result
-	out_color = color.rgba * f + r * color.rgba * 0.5;
+	out_color = color.rgba * f + r * color.rgba;
 	float max = out_color.r;
 	if(out_color.g > max)
 	{

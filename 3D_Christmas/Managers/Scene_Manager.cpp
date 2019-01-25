@@ -23,7 +23,7 @@ Scene_Manager::Scene_Manager()
 									"Shaders\\Vertex_Shader_Phong.glsl",
 									"Shaders\\Fragment_Shader_Phong.glsl");
 
-	camera_position = glm::vec3(0.0, 5.0, 8.0);//also at models_manager
+	camera_position = glm::vec3(0.0, 5.0, 8.0);
 	view_matrix = LookAt
 	(	
 		camera_position,
@@ -33,32 +33,33 @@ Scene_Manager::Scene_Manager()
 	glUseProgram(Shader_Manager::GetShader("colorShader"));
 	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "eye"), camera_position.x, camera_position.y, camera_position.z);
 	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "light"), 2, 3, 4);
-	glUniform1f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "ambient"), 0.06);
+	glUniform1f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "ambient"), 0.06f);
 	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "mainLight"), 10, 40, 5);
-	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "background"), 0.4, 0.6, 0.9);
+	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "background"), 0.4f, 0.6f, 0.9f);
 
 	glUseProgram(Shader_Manager::GetShader("colorShaderP"));
 	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "eye"), camera_position.x, camera_position.y, camera_position.z);
 	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "light"), 2, 3, 4);
-	glUniform1f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "ambient"), 0.06);
+	glUniform1f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "ambient"), 0.06f);
 	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "mainLight"), 10, 40, 5);
-	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "background"), 0.4, 0.6, 0.9);
+	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "background"), 0.4f, 0.6f, 0.9f);
 
 	glUseProgram(Shader_Manager::GetShader("colorShaderN"));
 	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "eye"), camera_position.x, camera_position.y, camera_position.z);
 	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "light"), 2, 3, 4);
-	glUniform1f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "ambient"), 0.04);
+	glUniform1f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "ambient"), 0.04f);
 	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "mainLight"), 0, -1e9, 0);
-	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "background"), 0.0, 0.1, 0.2);
+	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "background"), 0.0f, 0.1f, 0.2f);
 
 	glUseProgram(Shader_Manager::GetShader("colorShaderPN"));
 	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "eye"), camera_position.x, camera_position.y, camera_position.z);
 	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "light"), 2, 3, 4);
-	glUniform1f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "ambient"), 0.04);
+	glUniform1f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "ambient"), 0.04f);
 	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "mainLight"), 0, -1e9, 0);
-	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "background"), 0.0, 0.1, 0.2);
+	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "background"), 0.0f, 0.1f, 0.2f);
 
-	models_manager = new Models_Manager();	
+
+	models_manager = new Models_Manager(camera_position);	
 }
 
 Scene_Manager::~Scene_Manager()

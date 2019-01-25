@@ -13,6 +13,7 @@ void main()
 {
 	color = in_color;
 	
+	//rotation 1
 	float x_angle = 2 * sin(step);
 	mat4 xr = mat4(1.0);
 	xr[1][1] = cos(x_angle);
@@ -20,6 +21,7 @@ void main()
 	xr[1][2] = sin(x_angle);
 	xr[2][1] = -xr[1][2];
 	
+	//rotation 2
 	float z_angle = 0.4 * sin(step + 1);
 	mat4 zr = mat4(1.0);
 	zr[0][0] = cos(z_angle);
@@ -27,6 +29,7 @@ void main()
 	zr[0][1] = sin(z_angle);
 	zr[1][0] = -zr[1][2];
 
+	//translation
 	mat4 t = mat4(1.0);
 	t[3].xyz = translation;
     

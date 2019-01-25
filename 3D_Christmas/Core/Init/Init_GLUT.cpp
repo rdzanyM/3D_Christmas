@@ -40,7 +40,6 @@ void Init_GLUT::init(	const Core::WindowInfo& windowInfo,
 	glutReshapeFunc(reshapeCallback);
 
 	Init::Init_GLEW::Init();
-	Core::Init::Init_GLEW::Init();
 	glDebugMessageCallback(DebugOutput::myCallback, NULL);
 	glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, NULL, GL_TRUE);
 

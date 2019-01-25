@@ -17,7 +17,7 @@ namespace Managers
 	class Models_Manager
 	{
 	public:
-		Models_Manager();
+		Models_Manager(const glm::vec3& camera_position);
 		~Models_Manager();
 
 		void Draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix, const glm::vec3& camera_position);

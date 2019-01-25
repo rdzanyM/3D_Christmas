@@ -8,10 +8,11 @@ bool night = false;
 Models::Star* star;
 std::vector<Rendering::ISceneObject*> objects;
 glm::mat4 vm;
-glm::vec3 cam = glm::vec3(0.0, 5.0, 8.0); //also at scene_manager
+glm::vec3 cam;
 
-Models_Manager::Models_Manager()
+Models_Manager::Models_Manager(const glm::vec3& camera_position)
 {
+	cam = glm::vec3(camera_position);
 
 	Models::Quad2* ground = new Models::Quad2();
 	ground->SetProgram(Shader_Manager::GetShader("colorShader"));
@@ -33,7 +34,7 @@ Models_Manager::Models_Manager()
 
 	Models::Gift* gift = new Models::Gift();
 	gift->SetProgram(Shader_Manager::GetShader("colorShader"));
-	gift->Create(-2, 0, 4, 1, 1.4, 1, glm::vec4(1.0, 0.0, 1.0, 1.0), glm::vec4(1.0, 1.0, 0.0, 1.0));
+	gift->Create(-2, 0, 2, 1, 1.4, 1, glm::vec4(1.0, 0.0, 1.0, 1.0), glm::vec4(1.0, 1.0, 0.0, 1.0));
 	sceneModelList["gift"] = gift;
 	objects.push_back(gift);
 
@@ -55,18 +56,36 @@ Models_Manager::Models_Manager()
 	sceneModelList["star"] = star;
 
 	Timer(0);
-
+	std::cout << "\n\nGouraud shading\n\n";
 }
 
 void Timer(int value)
 {
 	glutTimerFunc(16, Timer, 0);
-
+	static int shader = 0;
 	//move the star
-	double x = 4 * sin(step);
-	double y = 2.5 + sin(step * 2.2);
-	double z = 4 * cos(step);
-	glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "light"), x, y, z);
+	float x = 2.0f * sin(step);
+	float y = 2.5f + sin(step * 2.2f);
+	float z = 2.5f * cos(step);
+	switch (shader)
+	{
+	case 0:
+		glUseProgram(Shader_Manager::GetShader("colorShader"));
+		glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "light"), x, y, z);
+		break;
+	case 1:
+		glUseProgram(Shader_Manager::GetShader("colorShaderP"));
+		glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShaderP"), "light"), x, y, z);
+		break;
+	case 2:
+		glUseProgram(Shader_Manager::GetShader("colorShaderN"));
+		glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShaderN"), "light"), x, y, z);
+		break;
+	case 3:
+		glUseProgram(Shader_Manager::GetShader("colorShaderPN"));
+		glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShaderPN"), "light"), x, y, z);
+		break;
+	}
 	star->Move(x, y, z);
 
 	//alternate cameras and shading
@@ -81,7 +100,9 @@ void Timer(int value)
 				{
 					model->SetProgram(Shader_Manager::GetShader("colorShaderP"));
 				}
+				shader = 1;
 				change -= 3;
+				std::cout << "\n\nPhong shading\n\n";
 			}
 			else if (change == 5)
 			{
@@ -90,7 +111,9 @@ void Timer(int value)
 				{
 					model->SetProgram(Shader_Manager::GetShader("colorShaderN"));
 				}
+				shader = 2;
 				change -= 3;
+				std::cout << "\n\nGouraud shading\n\n";
 			}
 			else if (change == 6)
 			{
@@ -98,7 +121,9 @@ void Timer(int value)
 				{
 					model->SetProgram(Shader_Manager::GetShader("colorShaderPN"));
 				}
+				shader = 3;
 				change -= 3;
+				std::cout << "\n\nPhong shading\n\n";
 			}
 			else if (change == 7)
 			{
@@ -107,7 +132,9 @@ void Timer(int value)
 				{
 					model->SetProgram(Shader_Manager::GetShader("colorShader"));
 				}
+				shader = 0;
 				change = 0;
+				std::cout << "\n\nGouraud shading\n\n";
 			}
 			glm::vec3 f = cam - glm::vec3(0.0, 2.0, 0.0);
 			f = glm::normalize(f);
@@ -168,6 +195,25 @@ void Timer(int value)
 		{
 			if (change < 4)
 			{
+				switch (change)
+				{
+				case 0:
+					glUseProgram(Shader_Manager::GetShader("colorShader"));
+					glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "eye"), cam.x, cam.y, cam.z);
+					break;
+				case 1:
+					glUseProgram(Shader_Manager::GetShader("colorShaderP"));
+					glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "eye"), cam.x, cam.y, cam.z);
+					break;
+				case 2:
+					glUseProgram(Shader_Manager::GetShader("colorShaderN"));
+					glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "eye"), cam.x, cam.y, cam.z);
+					break;
+				case 3:
+					glUseProgram(Shader_Manager::GetShader("colorShaderPN"));
+					glUniform3f(glGetUniformLocation(Shader_Manager::GetShader("colorShader"), "eye"), cam.x, cam.y, cam.z);
+					break;
+				}
 				change += 4;
 			}
 			glm::vec3 f = cam - glm::vec3(x, y, z);
@@ -186,7 +232,7 @@ void Timer(int value)
 		}
 	}
 
-	step += 0.04f;
+	step += 0.02f;
 }
 
 Models_Manager::~Models_Manager()

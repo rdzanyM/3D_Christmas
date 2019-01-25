@@ -136,5 +136,5 @@ void Star::Draw(const glm::mat4& projection_matrix, const glm::mat4& view_matrix
 	glUniform1f(glGetUniformLocation(program, "step"), f);
 	glBindVertexArray(vao);
 	glDrawArrays(GL_TRIANGLES, 0, 72);
-	f += 0.01;
+	f += 0.01f;
 }
